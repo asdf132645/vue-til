@@ -1,0 +1,19 @@
+//@ 절대경로 설정 파일
+
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "~/*": [
+          "./*"
+        ],
+        "@/*": [
+          "./src/*"
+        ],
+      }
+    },
+    "exclude": [
+      "node_modules",
+      "dist"
+    ]
+  }
