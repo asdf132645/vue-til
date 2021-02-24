@@ -35,3 +35,110 @@
 
 **Copyright © 2019 Captain Pangyo**
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License</a>.
+
+
+### (Code Splitting) 방법 다이나믹 임포트 웹팩 코어js에서 만든 코드
+
+component: () => import('@/views/SignupPage.vue'),
+
+https://webpack.js.org/guides/code-splitting/
+
+
+### Vue.js 다이나믹 임포트 문서
+
+https://vuejs.org/v2/guide/components-dynamic-async.html#ad
+
+
+### 초기 진입 라우트 설정
+
+{
+      path: '/',
+      redirect: '/login',
+    },
+
+
+### 라우터 폴백 없는페이지 반응
+ {
+      path: '*',
+      component: () => import('@/views/NotFoundPage.vue'),
+    },
+
+
+
+### eslint 셋팅 
+{
+    "git.autofetch": true,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Night Owl",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "eslint.alwaysShowStatus": true,
+    "eslint.workingDirectories": [
+        {
+            "mode": "auto"
+        }
+    ],
+    // ESLint
+    "eslint.validate": [
+    
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "javascript",
+            "autoFix": true
+        },
+        {
+            "language": "javascriptreact",
+            "autoFix": true
+        },
+        {
+            "language": "typescript",
+            "autoFix": true
+        },
+        {
+            "language": "typescriptreact",
+            "autoFix": true
+        }
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    // don't format on save
+    "editor.formatOnSave": false
+}
+
+### 서버배포시 라우터 url 설정값 확인 사이트
+
+https://router.vuejs.org/guide/essentials/history-mode.html
+
+
+### 이벤트 버블링
+버튼 클릭 시 이벤트가 form 으로 올라감
+
+### 이벤트 오작동 방지 -> prevent 붙여주기
+@:submit.prevent
+
+
+### 파라메터 (Parameters)
+
+api 요청할떄 항상 체크해야하는부분
+
+
+
+### 백틱
+
+변수를 문자열이랑 그냥 합쳐서 뭉태기로 쓰기
+`${data.username} 님이 가입되었습니다`
+
+### 디스트럭처링(Destructuring)
+
+const response  같은 변수 안에 데이터를 바로쓰는방법  response.data 를 분해 해서  const { data } 이렇게 축약 data.username
+response를 생략하는 방법 액션함수의 커밋도 같은 방식임
+
