@@ -142,3 +142,39 @@ api 요청할떄 항상 체크해야하는부분
 const response  같은 변수 안에 데이터를 바로쓰는방법  response.data 를 분해 해서  const { data } 이렇게 축약 data.username
 response를 생략하는 방법 액션함수의 커밋도 같은 방식임
 
+### 라우터 이동 js 사용시 아래 문법사용
+this.$router.push(이동할페이지인수값적기); js 이동 문법 -> <router-link to="">는 html 이동 문법 와 동일
+
+라우터 공식 홈페이지
+https://router.vuejs.org/guide/essentials/navigation.html#programmatic-navigation
+
+###  패키지json에서 dependencies 에서는 npm run build 에서 자원이 압축이되어서 dist 에 포함되어서 들어감
+devDependencies 는 npm run build에 포함되어서 들어가지 않음 말그대로 배포할떄 포함되지않음
+
+
+### 타입까지 점검해주는 === 
+
+### json 웹토큰 문서
+https://jwt.io/
+
+jwt  -> 라고 줄여서부르고 가장 많이 쓰이는 인증방식
+
+### 토큰은 인증값
+token
+
+### 헤더속성 기본내장속성
+headers:{
+    Authorization: 토큰을 실어주기 f12 네트워크에 headers 에 Request Headers 에 Authorization 에 토큰을 넣을수있음
+  }
+
+### axios.interceptors 리퀘스트 등 쓸떄 axios 가아닌 아래 문법으로 대체
+
+axios.interceptors.request.use(
+
+
+### axios
+
+CREATE - posts
+POST - posts {id}
+PUT - posts {id}
+DELETE - posts {id}
