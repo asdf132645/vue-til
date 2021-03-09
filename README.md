@@ -178,3 +178,18 @@ CREATE - posts
 POST - posts {id}
 PUT - posts {id}
 DELETE - posts {id}
+
+
+### 프런트엔드 테스팅 소개
+
+npm t 라고 치면 실행
+
+파일명은 LoginForm.spec.js , LoginForm.test.js  이런식 으로 작성해야 테스트 JS로 인식
+
+jest.config.js 에서 설정한 파일명
+
+테스트파일은 __test__ 폴더를 만들어서 그안에 넣어서 테스트 하는게 가장좋은방법임
+
+
+### 테스팅 js describe() 함수
+연관된 테스트 케이스를 그룹화하는 api

@@ -1,6 +1,6 @@
 <template>
   <div class="contents">
-    <h1 class="page-header">생성페이지</h1>
+    <h1 class="page-header">수정페이지</h1>
     <div class="form-wrapper">
       <form class="form" @submit.prevent="submitForm">
         <div>
@@ -19,7 +19,7 @@
             텍스트 길이는 200자 이하
           </p>
         </div>
-        <button class="btn" type="submit">생성</button>
+        <button class="btn" type="submit">수정</button>
       </form>
       <P class="log">
         {{ logMessage }}
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { createPost } from '@/api/posts';
+import { fetchPost, editPost } from '@/api/posts';
 
 export default {
   data() {
@@ -46,19 +46,25 @@ export default {
   },
   methods: {
     async submitForm() {
+      const id = this.$route.params.id;
       try {
-        const response = await createPost({
-          //현재 입력한값을 넘긴다는것
+        await editPost(id, {
           title: this.title,
           contents: this.contents,
         });
         this.$router.push('/main');
-        console.log(response);
-      } catch (error) {
-        console.log(error.response.data.message);
-        this.logMessage = error.response.data.message;
+      } catch (err) {
+        console.log(err);
+        this.logMessage = err;
       }
     },
+  },
+  async created() {
+    const id = this.$route.params.id;
+    const { data } = await fetchPost(id);
+    this.title = data.title;
+    this.contents = data.contents;
+    // console.log(data);
   },
 };
 </script>
