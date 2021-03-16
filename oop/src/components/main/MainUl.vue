@@ -4,7 +4,7 @@
 			<DateTimePicker :label="'시작날짜'"></DateTimePicker>
 			<DateTimePicker :label="'종료날짜'"></DateTimePicker>
 		</v-row>
-		<div>
+		<div :class="classObject">
 			{{ value }}
 			{{ title }}
 			{{ titls }}
@@ -31,17 +31,33 @@
 				</tr>
 			</table>
 		</div>
+		<div>
+			<ul>
+				<li v-for="brandName in brandNames" :key="brandName"></li>
+			</ul>
+		</div>
+		<div>
+			<button v-on:click="clickBtn">HelloWorld</button>
+		</div>
+		<div></div>
 	</div>
 </template>
 
 <script>
 import DateTimePicker from '@/components/common/DateTimePicker';
 import mixin from '@/mixins/ListMixin';
+import { brandName } from '@/api/brandName';
+import EventBus from '@/utils/EventBus';
 
 export default {
 	data() {
 		return {
+			brandNames: [],
 			title: '병합처리',
+			classObject: {
+				active: false,
+				'text-danger': true,
+			},
 			id: '',
 			pass: '',
 			users: [
@@ -71,6 +87,13 @@ export default {
 			console.log('id =' + this.id);
 			console.log('pass = ' + this.pass);
 		},
+		async fetchData() {
+			const { data } = await brandName();
+			this.brandNames = data.email;
+		},
+		clickBtn() {
+			EventBus.$emit('busEventName', '넘기는 인자값', '넘기는 인자값2');
+		},
 	},
 	computed: {
 		selectAll: {
@@ -89,6 +112,9 @@ export default {
 				this.selected = selected;
 			},
 		},
+	},
+	created() {
+		this.fetchData();
 	},
 };
 </script>

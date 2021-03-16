@@ -16,4 +16,4 @@ function createInstanceWithAuth(url) {
 }
 
 export const instance = createInstance();
-export const posts = createInstanceWithAuth('posts');
+export const brandNameg = createInstanceWithAuth('/users/v1/abc/user/whoami');
